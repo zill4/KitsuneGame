@@ -4,13 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
+#include "MenuSystem/MenuInterface.h"
 #include "KitsuneGameInstance.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class KITSUNE_API UKitsuneGameInstance : public UGameInstance
+class KITSUNE_API UKitsuneGameInstance : public UGameInstance, public IMenuInterface
 {
 	GENERATED_BODY()
 
@@ -30,4 +31,6 @@ public:
 
 private:
 	TSubclassOf<class UUserWidget> MenuClass;
+
+	class UMainMenu* Menu;
 }; 
