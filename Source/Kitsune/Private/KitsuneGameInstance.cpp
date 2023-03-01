@@ -6,6 +6,7 @@
 #include "UObject/ConstructorHelpers.h"
 #include "Blueprint/UserWidget.h"
 
+
 #include "MenuSystem/MainMenu.h"
 
 UKitsuneGameInstance::UKitsuneGameInstance(const FObjectInitializer& ObjectInitializer)
@@ -55,6 +56,9 @@ void UKitsuneGameInstance::Host()
 
 	World->ServerTravel("/Game/ThirdPerson/Maps/ThirdPersonMap");
 
+	const FString IPAddress = World->GetNetDriver()->LocalAddr->ToString(true);
+
+	//Engine->AddOnScreenDebugMessage(0, 5, FColor::Green, FString::Printf(TEXT("Server: %s"), *IPAddress));
 }
 
 void UKitsuneGameInstance::Join(const FString& Address)
