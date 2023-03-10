@@ -56,7 +56,7 @@ void UKitsuneGameInstance::Host()
 
 	World->ServerTravel("/Game/ThirdPerson/Maps/ThirdPersonMap");
 
-	const FString IPAddress = World->GetNetDriver()->LocalAddr->ToString(true);
+	//const FString IPAddress = World->GetNetDriver()->LocalAddr->ToString(true);
 
 	//Engine->AddOnScreenDebugMessage(0, 5, FColor::Green, FString::Printf(TEXT("Server: %s"), *IPAddress));
 }
@@ -71,6 +71,8 @@ void UKitsuneGameInstance::Join(const FString& Address)
 
 	APlayerController* PlayerController = GetFirstLocalPlayerController();
 	if (!ensure(PlayerController != nullptr)) return;
+
+	Engine->AddOnScreenDebugMessage(0, 5, FColor::Green, TEXT("Joining add"));
 
 	PlayerController->ClientTravel(Address, ETravelType::TRAVEL_Absolute);
 }
